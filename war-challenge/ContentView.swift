@@ -8,14 +8,87 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var playerCard: String = "card3"
+    @State var cpuCard: String = "card4"
+    @State var playerScore: Int = 0
+    @State var cpuScore: Int = 0
+    
+//https://www.youtube.com/watch?v=F2ojC6TNwws
+    
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Spacer()
+            Image("logo")
+            
+            Spacer()
+            
+            HStack{
+                Spacer()
+                Image(playerCard)
+                Spacer()
+                Image(cpuCard)
+                Spacer()
+            }
+            
+            Spacer()
+
+            Button(action: {
+                // generate a random number between 2 and 14
+                let playerRandom = Int.random(in: 2 ... 14)
+                
+                let cpuRandom = Int.random(in: 2 ... 14)
+                
+                
+                // update the cards:
+                playerCard = "card" + String(playerRandom)
+                cpuCard = "card" + String(cpuRandom)
+                
+                playerScore += 1
+                cpuScore += 1
+                
+                
+            }, label: {
+                Image("dealbutton")
+            })
+            
+            Spacer()
+            
+            HStack{
+                Spacer()
+                VStack() {
+                    Text("Player")
+                        .font(.headline)
+                        .padding(.bottom, 10.0)
+                    Text(String(playerScore))
+                        .font(.largeTitle)
+                }
+                
+                Spacer()
+                
+                VStack() {
+                    Text("CPU")
+                        .font(.headline)
+                        .padding(.bottom, 10.0)
+                    Text(String(cpuScore))
+                        .font(.largeTitle)
+                }
+                Spacer()
+            }.foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
+            Spacer()
+            
+        }
+        .background(
+            Image("background")
+                .resizable()
+                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        )
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewInterfaceOrientation(.portrait)
     }
 }
