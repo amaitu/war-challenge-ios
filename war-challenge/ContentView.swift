@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var playerCard: String = "card3"
-    @State var cpuCard: String = "card4"
-    @State var playerScore: Int = 0
-    @State var cpuScore: Int = 0
+    @State private var playerCard: String = "card3"
+    @State private var cpuCard: String = "card4"
+    @State private var playerScore: Int = 0
+    @State private var cpuScore: Int = 0
     
 //https://www.youtube.com/watch?v=F2ojC6TNwws
     
@@ -36,13 +36,12 @@ struct ContentView: View {
             Button(action: {
                 // generate a random number between 2 and 14
                 let playerRandom = Int.random(in: 2 ... 14)
-                
                 let cpuRandom = Int.random(in: 2 ... 14)
-                
                 
                 // update the cards:
                 playerCard = "card" + String(playerRandom)
                 cpuCard = "card" + String(cpuRandom)
+                
                 
                 playerScore += 1
                 cpuScore += 1
