@@ -43,8 +43,13 @@ struct ContentView: View {
                 cpuCard = "card" + String(cpuRandom)
                 
                 
-                playerScore += 1
-                cpuScore += 1
+                if playerRandom > cpuRandom {
+                    playerScore += 1
+                }
+                
+                if cpuRandom > playerRandom {
+                    cpuScore += 1
+                }
                 
                 
             }, label: {
